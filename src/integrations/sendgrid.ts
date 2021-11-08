@@ -1,6 +1,7 @@
 import { Status } from "https://deno.land/x/oak/mod.ts";
 import { sendSimpleMail } from "https://deno.land/x/sendgrid@0.0.3/mod.ts";
 import { Submission } from "../types/Submission.ts";
+import { Integration } from "../types/Integration.ts";
 
 const requiredEnvVariables = [
   "SENDGRID_API_KEY",
@@ -9,10 +10,7 @@ const requiredEnvVariables = [
 ];
 
 // sendSimpleMail()
-
-export async function submission(args: {
-  submission: Submission;
-}): Promise<Status> {
+async function submission(args: { submission: Submission }): Promise<Status> {
   const env = Deno.env.toObject();
   if (requiredEnvVariables.some((value) => env[value] === undefined)) {
     throw `Missing required env variables ${requiredEnvVariables}`;
@@ -40,3 +38,7 @@ export async function submission(args: {
     return 200;
   }
 }
+
+export const sendgrid: Integration = {
+  submission,
+};

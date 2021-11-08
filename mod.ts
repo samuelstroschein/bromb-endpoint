@@ -1,23 +1,24 @@
 import { Application, Router } from "https://deno.land/x/oak/mod.ts";
 import { oakCors } from "https://deno.land/x/cors@v1.2.2/mod.ts";
 
-import type { Integration } from "./types/Integration.ts";
-import type { Submission } from "./types/Submission.ts";
+import type { Integration } from "./src/types/Integration.ts";
+import type { Submission } from "./src/types/Submission.ts";
 // load env file automatically
 import "https://deno.land/x/dotenv/load.ts";
-import { WidgetConfig } from "./types/WidgetConfig.ts";
+import { WidgetConfig } from "./src/types/WidgetConfig.ts";
+import { integrations } from "./src/integrations/index.ts";
 
 const app = new Application();
 const router = new Router();
-const pathToIntegration = Deno.env.get("PATH_TO_INTEGRATION");
+const integrationName = Deno.env.get("INTEGRATION_FILE_NAME");
 
-if (pathToIntegration === undefined) {
-  throw "The env file does not specify PATH_TO_INTEGRATION which is required.";
+if (integrationName === undefined) {
+  throw "The env file does not specify INTEGRATION_FILE_NAME which is required.";
 }
 
-// integration is a function that you can specify with the PATH_TO_INTEGRATION
-// env variable
-const integration: Integration = await import(pathToIntegration);
+// integration is a function that you can specify with the INTEGRATION_FILE_NAME
+// env variable. IntegrationName
+const integration: Integration = integrations[integrationName as "consoleLog"]; // ugly workaround for type safety
 
 router
   .get("/", async (context) => {
