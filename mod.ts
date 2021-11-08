@@ -25,6 +25,7 @@ const integration: Integration = integrations[integrationName as "consoleLog"]; 
 
 router
   .get("/", async (context) => {
+    console.log({ env: Deno.env.toObject() });
     context.response.body = await Deno.readFile("./index.html");
     context.response.type = "html";
   })
