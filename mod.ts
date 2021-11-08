@@ -10,10 +10,13 @@ import { integrations } from "./src/integrations/index.ts";
 
 const app = new Application();
 const router = new Router();
-const integrationName = Deno.env.get("INTEGRATION_FILE_NAME");
+let integrationName = Deno.env.get("INTEGRATION_FILE_NAME");
 
 if (integrationName === undefined) {
-  throw "The env file does not specify INTEGRATION_FILE_NAME which is required.";
+  console.warn(
+    "Warning: The env file does not specify INTEGRATION_FILE_NAME. Using consoleLog as fallback"
+  );
+  integrationName = "consoleLog";
 }
 
 // integration is a function that you can specify with the INTEGRATION_FILE_NAME
