@@ -1,0 +1,26 @@
+[
+  {
+    "organizationName": "exampleOrganization",
+    "projectName": "exampleProject",
+    "submissionCategories": [
+      {
+        "id": "feedback",
+        "title": "Feedback",
+        "description": "Any idea how we can improve this site?",
+        "emoji": "📣"
+      },
+      {
+        "id": "bug",
+        "title": "Report a bug",
+        "description": "Found an error?",
+        "emoji": "🐞"
+      },
+      {
+        "id": "feature",
+        "title": "Feature Request",
+        "description": "You have an idea for a new feature?",
+        "emoji": "💡"
+      }
+    ]
+  }
+]
