@@ -26,7 +26,7 @@ Try out the widget. Each submission should appear in the terminal since the endp
 
 1. Click the button [![image](https://user-images.githubusercontent.com/23035000/116934239-b0d4a400-ac32-11eb-83f6-0c4119d59fa8.png)](https://dash.deno.com/new?url=https://raw.githubusercontent.com/%3CYOUR%20GITHUB%20USERNAME%3E/bromb-endpoint/main/mod.ts&env=INTEGRATION_FILE_NAME) button
 2. Click deploy
-3. Change <YOUR GITHUB USERNAME> in the url to yours
+3. Change `<YOUR GITHUB USERNAME>` in the url to yours
 4. Link your github repo by copy and pasting this link `https://github.com/<YOUR GITHUB USERNAME>/bromb-endpoint/blob/main/mod.ts`
   
 <img src="https://raw.githubusercontent.com/samuelstroschein/bromb-endpoint/main/assets/deno-deploy.gif" width="500"/>
