@@ -35,14 +35,6 @@ router
       const widgetConfigs = JSON.parse(
         decoder.decode(await Deno.readFile("./widgetConfig.json"))
       ) as WidgetConfig[];
-      console.log({
-        configs: widgetConfigs,
-        find: widgetConfigs.find(
-          (config) =>
-            config.organizationName === context.params.organizationName &&
-            config.projectName === context.params.projectName
-        ),
-      });
       context.response.body = widgetConfigs.find(
         (config) =>
           config.organizationName === context.params.organizationName &&
